@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.1" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="mur" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="sprite/sp1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="2" name="sp3" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="sprite/sp3.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="3" name="sp2" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="sprite/sp2.png" width="32" height="32"/>
+ </tileset>
+ <layer name="Calque de Tile 1" width="10" height="10">
+  <data encoding="csv">
+1,2,3,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

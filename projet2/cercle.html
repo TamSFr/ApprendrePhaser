@@ -1,0 +1,87 @@
+<!doctype html> 
+<html"> 
+	<head> 
+		<meta charset="UTF-8" />
+		<title>Phaser</title>
+		<script type="text/javascript" src="js/phaser.min.js"></script>
+	</head>
+	
+	<body>
+
+	</body>
+
+	<script type="text/javascript">
+	
+		var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+		var cursors; 
+		var tailleBoule;
+		var vitesse;
+		var ennemis;
+		
+		function preload() {
+			game.load.image('boule', 'sphere.png');
+			game.load.image('bouleR', 'spherer.png');
+		}
+		
+		function create() {
+			game.physics.startSystem(Phaser.Physics.ARCADE);
+			
+			
+			tailleBoule = 0.05;
+			//Player
+			//Gestion de maBoule
+			maBoule = game.add.sprite(100, 400, 'boule');
+			maBoule.anchor.setTo(0.5, 0.5);
+			maBoule.scale.x =tailleBoule;
+			maBoule.scale.y =tailleBoule;
+			maBoule.x=300;
+			game.physics.enable(maBoule, Phaser.Physics.ARCADE);
+			
+			
+			
+			//ennemis
+			//Gestion de boule rouge
+			bouleR =  game.add.sprite(100, 200, 'bouleR');
+			bouleR.anchor.setTo(0.5, 0.5);
+			bouleR.scale.x =tailleBoule;
+			bouleR.scale.y =tailleBoule;
+			
+			game.physics.arcade.enable(bouleR);
+			bouleR.body.setCircle(1200);
+			maBoule.body.setCircle(1200);
+			
+			
+			//Les controle
+			cursors = game.input.keyboard.createCursorKeys();
+		}
+		
+		function update() {
+			vitesse = 200;
+			game.physics.arcade.overlap(maBoule, bouleR, colli, null, this);
+			maBoule.body.velocity.x = 0;
+			
+			//Deplacement de la boule
+			if (cursors.left.isDown){ 
+				maBoule.body.velocity.x = -vitesse;
+			}
+			
+			if (cursors.right.isDown){ 
+				maBoule.body.velocity.x = vitesse;
+			} 
+			
+			if (cursors.up.isDown){ 
+				maBoule.body.velocity.y = -vitesse;
+			} 
+			
+			if (cursors.down.isDown){ 
+				maBoule.body.velocity.y = vitesse;
+			} 
+			//Fin de Deplacement
+		}
+		
+		function colli(maBoule, bouleR){
+			bouleR.kill();
+		}
+	</script>
+
+</html>

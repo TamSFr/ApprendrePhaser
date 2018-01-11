@@ -1,0 +1,64 @@
+<!doctype html> 
+<html"> 
+	<head> 
+		<meta charset="UTF-8" />
+		<title>Phaser</title>
+		<script type="text/javascript" src="js/phaser.min.js"></script>
+	</head>
+	
+	<body>
+
+	</body>
+
+	<script type="text/javascript">
+	
+		var game = new Phaser.Game(800, 400, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+		var cursors; 
+		var tailleBoule;
+		
+		function preload() {
+			game.load.image('boule', 'sphere.png');
+			game.load.image('fond', 'fond2.jpg');
+		}
+		
+		function create() {			
+			//Gestion du fond
+			fond = game.add.sprite(0, -100, 'fond');
+			fond.scale.y=1.3;
+			//Player
+			//Gestion de maBoule
+			maBoule = game.add.sprite(300, 300, 'boule');
+			tailleBoule = 0.05;
+			maBoule.anchor.setTo(0.5, 0.5);
+			maBoule.scale.x =tailleBoule;
+			maBoule.scale.y =tailleBoule;
+			maBoule.x=300;
+			
+			//Les controle
+			cursors = game.input.keyboard.createCursorKeys();
+		}
+		
+		function update() {
+			
+			//Deplacement de la boule
+			if (cursors.left.isDown){ 
+				maBoule.x-=5;
+			}
+			
+			if (cursors.right.isDown){ 
+				maBoule.x+=5;
+			} 
+			
+			if (cursors.up.isDown){ 
+				maBoule.y-=5;;
+			} 
+			
+			if (cursors.down.isDown){ 
+				maBoule.y+=5;
+			} 
+			//Fin de Deplacement
+		}
+		
+	</script>
+
+</html>
